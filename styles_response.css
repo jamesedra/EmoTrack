@@ -1,0 +1,23 @@
+body {
+    background-color: #ec7b1e
+}
+
+.emoTrack {
+    width: 600px;
+    height: 450px;
+    display: block;
+    margin: auto;
+
+}
+
+.question {
+    text-align: center;
+    font-family: 'Coming Soon', cursive;
+    font-family: 'Lora', serif;
+}
+
+.display {
+    text-align: center;
+    color: brown;
+}
+
