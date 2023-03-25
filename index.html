@@ -15,10 +15,16 @@
         <h1>How are you feeling today?</h1>
     </div>
     <div class="buttons">
-        <button type="good"> <img src="HappyMonkey.png"> </button>
-        <button type="neutral"> <img src="NeutralMonkey.png"> </button>
-        <button type="bad"> <img src="BadMonkey.png"> </button>
+    <form method="POST" action="/process_data">
+        <label form="user_input"></label>
+            <button type="good" style="height: 200px; width: 200px;"><img src="HappyMonkey.png" height="100%" width="100%">
+            </button>
+            <button type="neutral" style="height: 200px; width: 200px;"><img src="NeutralMonkey.png" height="100%" width="100%">
+            </button>
+            <button type="bad" style="height: 200px; width: 200px;"><img src="BadMonkey.png" height="100%" width="100%"> </button>
+        </form>
     </div>
 
 </body>
 </html>
+
