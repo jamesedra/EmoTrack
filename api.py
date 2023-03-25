@@ -8,10 +8,10 @@ conn = sqlite3.connect('emo_track_responses.db')
 cursor = conn.cursor()
 
 # Create a table
-# table_exists = cursor.fetchone() is not None 
-# if not table_exists:
-#     cursor.execute('''CREATE TABLE emo_track_responses
-#                     (id INTEGER PRIMARY KEY, Answer TEXT, Responses TEXT)''')
+table_dont_exist = cursor.fetchone() is None 
+if not table_dont_exist:
+    cursor.execute('''CREATE TABLE emo_track_responses
+                    (id INTEGER PRIMARY KEY, Answer TEXT, Responses TEXT)''')
 
 
 # Insert some data into the table
