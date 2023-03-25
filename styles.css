@@ -18,3 +18,15 @@ body {
     text-align: center;
 }
 
+#good-button:hover {
+    transform: scale(1.4);
+}
+
+#neutral-button:hover {
+    transform: scale(1.4);
+}
+
+#bad-button:hover {
+    transform: scale(1.4);
+}
+
