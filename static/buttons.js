@@ -1,5 +1,5 @@
-console.log("good button: ", goodButton);
 const goodButton = document.querySelector('#good-button');
+console.log("good button: ", goodButton);
 goodButton.addEventListener('click', () => {
     fetch('/submit', {
         method: 'POST',
