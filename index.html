@@ -59,6 +59,7 @@
       function myFunction1(event) {
         event.preventDefault();
         document.getElementById("demo").innerHTML = "Good";
+        toShow();
       }
     </script>
 
@@ -77,3 +78,31 @@
     </script>
   </body>
 </html>
+
+<div class="spotify"
+    <script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async>
+    </script>
+    <div id="embed-iframe"></div>
+    <iframe id="spot" style="display: none;"
+    src="https://open.spotify.com/embed/playlist/37i9dQZF1DX3rxVfibe1L0?utm_source=generator" width="100%"
+    height="352" frameBorder="0" allowfullscreen=""
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    
+
+</div>
+
+<script>
+function toShow() {
+    var iframe = document.getElementById('spot');
+    if (iframe.style.display === "none") {
+      iframe.style.display = "block";
+    } else {
+      iframe.style.display = "none";
+    }
+  }
+
+
+ </script>
+
+    
+</body>
