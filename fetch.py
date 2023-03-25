@@ -12,29 +12,28 @@ def connect_to_database(db_path):
 def create_database():
     conn, curr = connect_to_database(DB_PATH)
     table_dont_exist = curr.fetchone() is None 
-    if not table_dont_exist:
+    if table_dont_exist:
         try:
             curr.execute('''CREATE TABLE emo_track_responses
-                    (id INTEGER PRIMARY KEY, Answer TEXT, Responses TEXT)''')
+                    (id INTEGER PRIMARY KEY AUTOINCREMENT, Answer TEXT, Responses TEXT)''')
+            conn.commit()
         except Exception as error:
             print(error)
-            raise Exception(f"Failed to create database {DB_PATH}")
         finally:
             conn.close()
 
-def insert(id, answer, responses):
+def insert(answer, responses):
     conn, curr = connect_to_database(DB_PATH)
     try:
-        curr.execute("INSERT INTO emo_track_responses (id, Answer, Responses) VALUES (?, ?, ?)", (0, "Bad", bad_str))
+        curr.execute("INSERT INTO emo_track_responses (Answer, Responses) VALUES (?, ?)", (answer, responses))
+        conn.commit()
+        print("Created Database!")
     except Exception as error:
         print(error)
-        raise Exception(f"Failed to insert ({id}, {answer}, {responses}).")
     finally:
         conn.close()
 
-
 create_database()
-
 
 # Insert some data into the table
 bad_answers = ["It's okay z", 
@@ -63,26 +62,27 @@ good_str = ', '.join(good_answers)
 mid_answers = ["nice"]
 mid_str = ', '.join(mid_answers)
 
-insert(0, "Bad", bad_str)
-insert(1, "Good", good_str)
-insert(2, "Neutral", mid_str)
+insert("Bad", bad_str)
+insert("Good", good_str)
+insert("Neutral", mid_str)
 
 
 def getResponses(UserInput):
-    # Retrieve the list of strings from the Responses column
-    # cursor.execute("SELECT Responses FROM emo_track_responses WHERE Answer = ?", (UserInput,))
-    # responses_tuple = cursor.fetchone()
-    # if responses_tuple is not None:
-    #     my_string = responses_tuple[0]
-    #     responses_list = my_string.split(" z,")
-    #     random_index = random.randint(0, len(responses_list) - 1)
-    #     response_str = responses_list[random_index]
-    #     print(response_str)  
-    #     return response_str
-    # else:
-    #     print("Sorry, I don't have a response for that.")
-    pass
 
+    conn, curr = connect_to_database(DB_PATH)
+    try:
+        curr.execute("SELECT Responses FROM emo_track_responses WHERE Answer = ?", (UserInput,))
+        responses_tuple = curr.fetchone()
+        my_string = responses_tuple[0]
+        responses_list = my_string.split(" z,")
+        random_index = random.randint(0, len(responses_list) - 1)
+        response_str = responses_list[random_index]
+        print(response_str)  
+        return response_str
+    except Exception as error:
+        print(error)
+    finally:
+        conn.close()
 
 
 ## Create a new instance of the Flask class
