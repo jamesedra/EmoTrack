@@ -25,7 +25,22 @@ bad_answers = ["It's okay z",
                "Don't rush to figure it all out. Let life suprise you"]
 bad_str = ', '.join(bad_answers)
 
+
+good_answers = ["You are doing an amazing job! Keep up the great work. z",
+                "You should be proud of yourself for all that you've accomplished today. z",
+                "You are making progress and moving forward. Keep going, you're doing great! z",
+                "You're doing everything right! Keep it up and keep pushing forward. z",
+                "You're really on a roll today! Keep up the momentum. z",
+                "Your hard work and effort is paying off. You're doing great! z",
+                "I can tell you're putting in a lot of effort and it's really paying off. Keep it up! z",
+                "You are doing fantastic today. Keep up the good work and you will achieve great things. z",
+                "It's clear that you're making great progress today. Keep up the momentum and you'll go far. z",
+                "Your hard work and dedication to your tasks is truly admirable. Keep it up! z"]
+good_str = ', '.join(good_answers)
+
+
 cursor.execute("INSERT INTO emo_track_responses (id, Answer, Responses) VALUES (?, ?, ?)", (0, "Bad", bad_str))
+cursor.execute("INSERT INTO emo_track_responses (id, Answer, Responses) VALUES (?, ?, ?)", (1, "Good", good_str))
 
 def getResponses(UserInput):
     # Retrieve the list of strings from the Responses column
@@ -46,5 +61,6 @@ def getResponses(UserInput):
 
 
 getResponses("Bad")
+getResponses("Good")
 
 
