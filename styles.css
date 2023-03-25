@@ -7,10 +7,14 @@ body {
     height: 450px;
     display: block;
     margin: auto;
-    
+
 }
 
 .question {
+    text-align: center;
+}
+
+.buttons {
     text-align: center;
 }
 
