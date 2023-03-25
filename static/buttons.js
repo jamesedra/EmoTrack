@@ -8,7 +8,6 @@ goodButton.addEventListener('click', () => {
           'Content-Type': 'application/json'
         }
     })
-    console.log("good button clicked")
 });
 
 const badButton = document.querySelector('#bad-button');
@@ -20,7 +19,6 @@ badButton.addEventListener('click', () => {
           'Content-Type': 'application/json'
         }
     })
-    console.log("bad button clicked")
 });
 
 const neutralButton = document.querySelector('#neutral-button');
@@ -32,5 +30,4 @@ neutralButton.addEventListener('click', () => {
           'Content-Type': 'application/json'
         }
     })
-    console.log("neutral button clicked")
 });

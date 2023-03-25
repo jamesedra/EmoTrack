@@ -38,7 +38,7 @@ create_database()
 # Insert some data into the table
 bad_answers = ["It's okay z", 
                "You probably got this z", 
-               "ove you z", 
+               "love you z", 
                "fear is the mind-killer z", 
                "let go of your earthly tethers z",
                "when we hit our lowest point we are open to greatest change z", 
@@ -56,7 +56,7 @@ good_answers = ["You are doing an amazing job! Keep up the great work. z",
                 "I can tell you're putting in a lot of effort and it's really paying off. Keep it up! z",
                 "You are doing fantastic today. Keep up the good work and you will achieve great things. z",
                 "It's clear that you're making great progress today. Keep up the momentum and you'll go far. z",
-                "Your hard work and dedication to your tasks is truly admirable. Keep it up! z"]
+                "Your hard work and dedication to your tasks is truly admirable. Keep it up!"]
 good_str = ', '.join(good_answers)
 
 mid_answers = ["nice"]
@@ -83,6 +83,8 @@ def getResponses(UserInput):
         print(error)
     finally:
         conn.close()
+
+getResponses("Good")
 
 ## Create a new instance of the Flask class
 app = Flask(__name__)
