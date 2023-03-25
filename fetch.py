@@ -84,7 +84,6 @@ def getResponses(UserInput):
     finally:
         conn.close()
 
-
 ## Create a new instance of the Flask class
 app = Flask(__name__)
 
@@ -97,7 +96,6 @@ def form():
 def submit():
     user_input = request.form['user_input']
     response = getResponses(user_input)
-    print(response)
     return render_template('response.html', display=response)
 
 if __name__ == '__main__':
