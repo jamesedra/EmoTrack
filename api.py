@@ -15,8 +15,15 @@ if not table_dont_exist:
 
 
 # Insert some data into the table
-answers = ["it's okay", "you probably got this", "love you"]
-bad_str = ', '.join(answers)
+bad_answers = ["It's okay z", 
+               "You probably got this z", 
+               "ove you z", 
+               "fear is the mind-killer z", 
+               "let go of your earthly tethers z",
+               "when we hit our lowest point we are open to greatest change z", 
+               "If you look for light you will find it. If you don't all you will see is darkness z", 
+               "Don't rush to figure it all out. Let life suprise you"]
+bad_str = ', '.join(bad_answers)
 
 cursor.execute("INSERT INTO emo_track_responses (id, Answer, Responses) VALUES (?, ?, ?)", (0, "Bad", bad_str))
 
@@ -26,7 +33,7 @@ def getResponses(UserInput):
     responses_tuple = cursor.fetchone()
     if responses_tuple is not None:
         my_string = responses_tuple[0]
-        responses_list = my_string.split(",")
+        responses_list = my_string.split(" z,")
         random_index = random.randint(0, len(responses_list) - 1)
         response_str = responses_list[random_index]
         print(response_str)  
