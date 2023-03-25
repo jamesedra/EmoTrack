@@ -38,9 +38,12 @@ good_answers = ["You are doing an amazing job! Keep up the great work. z",
                 "Your hard work and dedication to your tasks is truly admirable. Keep it up! z"]
 good_str = ', '.join(good_answers)
 
+mid_answers = ["nice"]
+mid_str = ', '.join(mid_answers)
 
 cursor.execute("INSERT INTO emo_track_responses (id, Answer, Responses) VALUES (?, ?, ?)", (0, "Bad", bad_str))
 cursor.execute("INSERT INTO emo_track_responses (id, Answer, Responses) VALUES (?, ?, ?)", (1, "Good", good_str))
+cursor.execute("INSERT INTO emo_track_responses (id, Answer, Responses) VALUES (?, ?, ?)", (2, "Mid", mid_str))
 
 def getResponses(UserInput):
     # Retrieve the list of strings from the Responses column
@@ -55,12 +58,5 @@ def getResponses(UserInput):
     else:
         print("Sorry, I don't have a response for that.")
 
-
-
-
-
-
-getResponses("Bad")
-getResponses("Good")
 
 
