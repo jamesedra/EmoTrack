@@ -12,9 +12,8 @@ def form():
 @app.route('/submit', methods=['POST'])
 def submit():
     user_input = request.form['user_input']
-    print(f'You entered: {user_input}')
-    api.getResponses(user_input)
-
+    response = api.getResponses(user_input)
+    return render_template('response.html', display=response)
 
 if __name__ == '__main__':
     app.run(debug=True)

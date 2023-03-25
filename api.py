@@ -55,6 +55,7 @@ def getResponses(UserInput):
         random_index = random.randint(0, len(responses_list) - 1)
         response_str = responses_list[random_index]
         print(response_str)  
+        return response_str
     else:
         print("Sorry, I don't have a response for that.")
 
