@@ -43,7 +43,7 @@ mid_str = ', '.join(mid_answers)
 
 cursor.execute("INSERT INTO emo_track_responses (id, Answer, Responses) VALUES (?, ?, ?)", (0, "Bad", bad_str))
 cursor.execute("INSERT INTO emo_track_responses (id, Answer, Responses) VALUES (?, ?, ?)", (1, "Good", good_str))
-cursor.execute("INSERT INTO emo_track_responses (id, Answer, Responses) VALUES (?, ?, ?)", (2, "Mid", mid_str))
+cursor.execute("INSERT INTO emo_track_responses (id, Answer, Responses) VALUES (?, ?, ?)", (2, "Neutral", mid_str))
 
 def getResponses(UserInput):
     # Retrieve the list of strings from the Responses column
