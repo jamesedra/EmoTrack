@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, jsonify
 import sqlite3
 import random
 
@@ -33,8 +33,6 @@ def insert(answer, responses):
     finally:
         conn.close()
 
-create_database()
-
 # Insert some data into the table
 bad_answers = ["It's okay z", 
                "You probably got this z", 
@@ -59,13 +57,13 @@ good_answers = ["You are doing an amazing job! Keep up the great work. z",
                 "Your hard work and dedication to your tasks is truly admirable. Keep it up!"]
 good_str = ', '.join(good_answers)
 
-mid_answers = ["nice"]
+mid_answers = ["nice z",
+               "alright"]
 mid_str = ', '.join(mid_answers)
 
 insert("Bad", bad_str)
 insert("Good", good_str)
 insert("Neutral", mid_str)
-
 
 def getResponses(UserInput):
 
@@ -94,11 +92,10 @@ app = Flask(__name__)
 def form():
     return render_template('index.html')
 
-@app.route('/submit', methods=['POST'])
-def submit():
-    user_input = request.form['user_input']
-    response = getResponses(user_input)
-    return render_template('response.html', display=response)
+@app.route('/submit/<request>', methods=['GET'])
+def submit(request):
+    response = getResponses(request)
+    return jsonify(response)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5002)

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&family=Lora:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="logo">
+    <img class="emoTrack" src="{{ url_for('static', filename='assets/EmoTrack Logo.png') }}" alt="" />
+  </div>
+  <div class="question">
+    <h1 id="response-text">How are you feeling today?</h1>
+  </div>
+
+  <div id="buttons" style="text-align: center">
+    <form method="POST" action="/process_data">
+      <label form="user_input"></label>
+
+      <button id="good-button" onclick="myFunction1(event)" style="height: 200px; width: 200px">
+        <img src="{{ url_for('static', filename='assets/HappyMonkey.png') }}" height="100%" width="100%" />
+      </button>
+
+      <button id="neutral-button" onclick="myFunction2(event)" style="height: 200px; width: 200px">
+        <img src="{{ url_for('static', filename='assets/NeutralMonkey.png') }}" height="100%" width="100%" />
+      </button>
+
+      <button id="bad-button" onclick="myFunction3(event)" style="height: 200px; width: 200px">
+        <img src="{{ url_for('static', filename='assets/BadMonkey.png') }}" height="100%" width="100%" />
+      </button>
+    </form>
+  </div>
+
+  <p id="demo"></p>
+
+  <script>
+    function myFunction1(event) {
+      event.preventDefault();
+      toShow();
+      fetch('/submit/Good')
+        .then(response => response.json())  // convert response to JSON
+        .then(data => {
+          // handle the JSON data
+          console.log(data);
+          const element = document.getElementById('response-text'); // document is HTML file, get the h1 id to change
+          element.textContent = data; // set new text
+        })
+        .catch(error => console.error(error)); // handle errors
+    }
+  </script>
+
+  <script>
+    function myFunction2(event) {
+      event.preventDefault();
+      toShow2();
+      fetch('/submit/Neutral')
+        .then(response => response.json())  // convert response to JSON
+        .then(data => {
+          // handle the JSON data
+          console.log(data);
+          const element = document.getElementById('response-text'); // document is HTML file, get the h1 id to change
+          element.textContent = data; // set new text
+        })
+        .catch(error => console.error(error)); // handle errors
+    }
+  </script>
+
+  <script>
+    function myFunction3(event) {
+      event.preventDefault();
+      toShow3();
+      fetch('/submit/Bad')
+        .then(response => response.json())  // convert response to JSON
+        .then(data => {
+          // handle the JSON data
+          console.log(data);
+          const element = document.getElementById('response-text'); // document is HTML file, get the h1 id to change
+          element.textContent = data; // set new text
+        })
+        .catch(error => console.error(error)); // handle errors
+    }
+  </script>
+</body>
+
+</html>
+
+<div class="spotify" <script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async>
+  </script>
+  <div id="embed-iframe"></div>
+
+  <iframe id="spot" style="display: none;"
+    src="https://open.spotify.com/embed/playlist/37i9dQZF1DX3rxVfibe1L0?utm_source=generator" width="100%" height="352"
+    frameBorder="0" allowfullscreen=""
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+  <iframe id="spot2" style="display: none;"
+    src="https://open.spotify.com/embed/playlist/4x9OtLt7bsmvqktbF0Y0Gm?utm_source=generator" width="100%" height="352"
+    frameBorder="0" allowfullscreen=""
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+  <iframe id="spot3" style="display: none;"
+    src="https://open.spotify.com/embed/playlist/37i9dQZF1EIg6gLNLe52Bd?utm_source=generator" width="100%" height="352"
+    frameBorder="0" allowfullscreen=""
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+
+</div>
+
+<script>
+  function toShow() {
+    var iframe = document.getElementById('spot');
+    if (iframe.style.display === "none") {
+      iframe.style.display = "block";
+    } else {
+      iframe.style.display = "none";
+    }
+  }
+
+  function toShow2() {
+    var iframe = document.getElementById('spot2');
+    if (iframe.style.display === "none") {
+      iframe.style.display = "block";
+    } else {
+      iframe.style.display = "none";
+    }
+  }
+
+  function toShow3() {
+    var iframe = document.getElementById('spot3');
+    if (iframe.style.display === "none") {
+      iframe.style.display = "block";
+    } else {
+      iframe.style.display = "none";
+    }
+  }
+
+
+</script>
+</body>
