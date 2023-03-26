@@ -13,23 +13,24 @@ body {
 .question {
     text-align: center;
     font-family: 'Coming Soon', cursive;
+    font-size: 15px;
     font-family: 'Lora', serif;
+    color: #5C4033;
 }
 
-buttons {
-    
+.buttons {
     text-align: center;
 }
 
 #good-button:hover {
-    transform: scale(1.4);
+    transform: scale(1.1);
 }
 
 #neutral-button:hover {
-    transform: scale(1.4);
+    transform: scale(1.1);
 }
 
 #bad-button:hover {
-    transform: scale(1.4);
+    transform: scale(1.1);
 }
 
