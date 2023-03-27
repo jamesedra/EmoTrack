@@ -22,15 +22,15 @@
     <form method="POST" action="/process_data">
       <label form="user_input"></label>
 
-      <button id="good-button" onclick="myFunction1(event)" style="height: 200px; width: 200px">
+      <button id="good-button" onclick="goodButtonFunction(event)" style="height: 200px; width: 200px">
         <img src="{{ url_for('static', filename='assets/HappyMonkey.png') }}" height="100%" width="100%" />
       </button>
 
-      <button id="neutral-button" onclick="myFunction2(event)" style="height: 200px; width: 200px">
+      <button id="neutral-button" onclick="neutralButtonFunction(event)" style="height: 200px; width: 200px">
         <img src="{{ url_for('static', filename='assets/NeutralMonkey.png') }}" height="100%" width="100%" />
       </button>
 
-      <button id="bad-button" onclick="myFunction3(event)" style="height: 200px; width: 200px">
+      <button id="bad-button" onclick="badButtonFunction(event)" style="height: 200px; width: 200px">
         <img src="{{ url_for('static', filename='assets/BadMonkey.png') }}" height="100%" width="100%" />
       </button>
     </form>
@@ -42,68 +42,30 @@
     </script>
     <div id="embed-iframe"></div>
 
-    <iframe id="spot1" style="display: none;"
+    <iframe id="spotifyiFrame" style="display: none;"
       src="https://open.spotify.com/embed/playlist/37i9dQZF1DX3rxVfibe1L0?utm_source=generator" width="100%"
       height="352" frameBorder="0" allowfullscreen=""
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-
-    <iframe id="spot2" style="display: none;"
-      src="https://open.spotify.com/embed/playlist/4x9OtLt7bsmvqktbF0Y0Gm?utm_source=generator" width="100%"
-      height="352" frameBorder="0" allowfullscreen=""
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-
-    <iframe id="spot3" style="display: none;"
-      src="https://open.spotify.com/embed/playlist/37i9dQZF1EIg6gLNLe52Bd?utm_source=generator" width="100%"
-      height="352" frameBorder="0" allowfullscreen=""
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-
-
   </div>
 
   <script>
     function removeAllSpotifyElements() {
-      var iframe1 = document.getElementById('spot1');
-      var iframe2 = document.getElementById('spot2');
-      var iframe3 = document.getElementById('spot3');
-      iframe1.style.display = "none";
-      iframe2.style.display = "none";
-      iframe3.style.display = "none";
-    }
-    function toShow() {
-      var iframe = document.getElementById('spot1');
-      if (iframe.style.display === "none") {
-        removeAllSpotifyElements();
-        iframe.style.display = "block";
-      } else {
-        iframe.style.display = "none";
-      }
+      var iframe = document.getElementById('spotifyiFrame');
+      iframe.style.display = "none";
     }
 
-    function toShow2() {
-      var iframe = document.getElementById('spot2');
-      if (iframe.style.display === "none") {
-        removeAllSpotifyElements();
-        iframe.style.display = "block";
-      } else {
-        iframe.style.display = "none";
-      }
-    }
-
-    function toShow3() {
-      var iframe = document.getElementById('spot3');
-      if (iframe.style.display === "none") {
-        removeAllSpotifyElements();
-        iframe.style.display = "block";
-      } else {
-        iframe.style.display = "none";
-      }
+    function loadSpotifyiFrame(src) {
+      removeAllSpotifyElements();
+      document.getElementById('spotifyiFrame').src = src;
+      var iframe = document.getElementById('spotifyiFrame');
+      iframe.style.display = "block";
     }
   </script>
 
   <script>
-    function myFunction1(event) {
+    function goodButtonFunction(event) {
       event.preventDefault();
-      toShow();
+      loadSpotifyiFrame("https://open.spotify.com/embed/playlist/37i9dQZF1DX3rxVfibe1L0?utm_source=generator");
       fetch('/submit/Good')
         .then(response => response.json())  // convert response to JSON
         .then(data => {
@@ -117,9 +79,9 @@
   </script>
 
   <script>
-    function myFunction2(event) {
+    function neutralButtonFunction(event) {
       event.preventDefault();
-      toShow2();
+      loadSpotifyiFrame("https://open.spotify.com/embed/playlist/4x9OtLt7bsmvqktbF0Y0Gm?utm_source=generator");
       fetch('/submit/Neutral')
         .then(response => response.json())  // convert response to JSON
         .then(data => {
@@ -133,9 +95,9 @@
   </script>
 
   <script>
-    function myFunction3(event) {
+    function badButtonFunction(event) {
       event.preventDefault();
-      toShow3();
+      loadSpotifyiFrame("https://open.spotify.com/embed/playlist/37i9dQZF1EIg6gLNLe52Bd?utm_source=generator");
       fetch('/submit/Bad')
         .then(response => response.json())  // convert response to JSON
         .then(data => {
