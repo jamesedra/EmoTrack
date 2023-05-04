@@ -1,6 +1,3 @@
-# EmoTrack
-Link: https://kashgarg.github.io/EmoTrack-BCSHacks2023/
-
 ## **What is EmoTrack?**
 EmoTrack generates a Spotify playlist based on the user's selected mood. The user can select a monkey expression to match their current emotional state, and EmoTrack will then produce a Spotify playlist that matches the selected mood. 
 
